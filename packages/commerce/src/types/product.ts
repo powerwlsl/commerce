@@ -52,6 +52,7 @@ export type SearchProductsBody = {
   brandId?: string | number
   sort?: string
   locale?: string
+  page? :string
 }
 
 export type ProductTypes = {

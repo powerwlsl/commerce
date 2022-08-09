@@ -12,7 +12,7 @@ const LIMIT = 12
 // Return current cart info
 const getProducts: ProductsEndpoint['handlers']['getProducts'] = async ({
   res,
-  body: { search, categoryId, brandId, sort },
+  body: { search, categoryId, brandId, sort, page },
   config,
   commerce,
 }) => {
@@ -29,6 +29,9 @@ const getProducts: ProductsEndpoint['handlers']['getProducts'] = async ({
 
   if (brandId && Number.isInteger(Number(brandId)))
     url.searchParams.set('brand_id', String(brandId))
+
+  if (page && Number.isInteger(Number(page)))
+    url.searchParams.set('page', String(page))
 
   if (sort) {
     const [_sort, direction] = sort.split('-')

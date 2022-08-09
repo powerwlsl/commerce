@@ -34,7 +34,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
 
   const router = useRouter()
   const { asPath, locale } = router
-  const { q, sort } = router.query
+  const { q, sort, page } = router.query
   // `q` can be included but because categories and designers can't be searched
   // in the same way of products, it's better to ignore the search input if one
   // of those is selected
@@ -52,6 +52,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
     brandId: (activeBrand as any)?.entityId,
     sort: typeof sort === 'string' ? sort : '',
     locale,
+    page: typeof page === 'number' ? String(page) : '',
   })
 
   const handleClick = (event: any, filter: string) => {
